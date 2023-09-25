@@ -11,7 +11,55 @@ const store = createStore({
     },
     getters: {},
     actions: {
-
+        login({ commit }, user){
+            return axiosClient.post('/login', user)
+                .then(({data}) => {
+                    commit('setUser', data)
+                    return data;
+                })
+        },
+        logout({ commit }){
+            return axiosClient.post('/logout')
+                .then(response => {
+                    commit('logout')
+                    localStorage.clear();
+                    return response;
+                })
+        },
+        forgotPassword({ }, user){
+            return axiosClient.post('/forgot-password', user)
+                .then(({data}) => {
+                    return data;
+                })
+        },
+        resetPassword({ }, user){
+            return axiosClient.post('/reset-password', user)
+                .then(({data}) => {
+                    return data;
+                })
+        },
+        updatePersonalInfo({ commit }, user){
+            return axiosClient.put(`/personal-info`, user)
+            .then(({data}) => {
+                commit('updatePersonalInfo', data)
+                return data;
+            })
+        },
+        updatePassword({ commit }, userPass){
+            return axiosClient.put(`/password/update`, userPass)
+                .then(({data}) => {
+                    commit('updatePassword')
+                    return data;
+                })
+        },
+        updatePersonalInfo: (state, userInfo) => {
+            state.user.data = userInfo.user;
+            localStorage.setItem('userInfo', JSON.stringify(userInfo.user));
+        },
+        logout: state => {
+            state.user.data = {};
+            state.user.token = null;
+        },
     },
     mutations: {
         setUser: (state, userData) => {

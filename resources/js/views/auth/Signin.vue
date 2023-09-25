@@ -20,6 +20,7 @@
                             <div class="card-body">
                                 <h5 class="text-start">Welcome aboard,</h5>
                                 <h5 class="text-start mb-3">sign in and get started.</h5>
+                                {{ errorMsg }}
                                 <form @submit.prevent="signin">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -42,7 +43,7 @@
                                             </router-link>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary text-white w-100">Sign in</button>
+                                    <button type="submit" class="btn btn-primary text-white w-100">Sign in</button>
                                     <p class="text-center text-dark mb-0 mt-3">
                                         Don't have an account? 
                                         <router-link :to="{name: 'Signup'}" class="text-secondary text-decoration-underline">
@@ -66,26 +67,34 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from 'vue-router'
 import store from '../../stores'
+
+const router = useRouter()
 
 let model = ref({
     email: '',
     password: '',
     remember: false
 })
+let errorMsg = ref('')
 
 const signin = () => {
     store
-        .dispatch('', model.value)
+        .dispatch('login', model.value)
         .then(res => {
-
+            router.push({name: 'Dashboard'})
         })
         .catch(err => {
-
+            if(err.response) {
+                if (err.response.data) {
+                    if (err.response.data.hasOwnProperty("message")) {
+                        errorMsg.value = err.response.data.message
+                    } else {
+                        errorMsg.value = err.response.data.error
+                    }
+                }
+            }
         })
 }
 </script>
-
-<style>
-
-</style>
