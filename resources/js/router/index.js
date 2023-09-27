@@ -7,6 +7,12 @@ import Signin from '../views/auth/Signin.vue'
 import Signup from '../views/auth/Signup.vue'
 import ForgotPassword from '../views/auth/ForgotPassword.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Chat from '../views/chat/Index.vue'
+import Bot from '../views/bots/Index.vue'
+import Knowledge from '../views/knowledge/Index.vue'
+import AccountUsers from '../views/account/User.vue'
+import AccountBilling from '../views/account/Billing.vue'
+import AccountIntegration from '../views/account/Integration.vue'
 
 const routes = [
     {
@@ -27,7 +33,13 @@ const routes = [
         component: AuthLayout,
         meta: {requiresAuth: true},
         children: [
-            {path: '/dashboard', name: 'Dashboard', component: Dashboard},
+            {path: 'dashboard', name: 'Dashboard', component: Dashboard},
+            {path: 'conversations', name: 'Chat', component: Chat},
+            {path: 'bots', name: 'Bot', component: Bot},
+            {path: 'directories', name: 'Knowledge', component: Knowledge},
+            {path: '/settings/users', name: 'AccountUsers', component: AccountUsers},
+            {path: '/settings/billing', name: 'AccountBilling', component: AccountBilling},
+            {path: '/settings/integrations', name: 'AccountIntegration', component: AccountIntegration},
         ]
     },
 ];

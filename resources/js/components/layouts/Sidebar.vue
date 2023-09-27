@@ -15,7 +15,10 @@
             <div class="navbar-collapse" id="sidebar">
                 <ul class="navbar-nav iq-main-menu">
                     <li class="nav-item">
-                        <router-link :to="{name: 'Dashboard'}" class="nav-link active" aria-current="page">
+                        <router-link :to="{name: 'Dashboard'}" 
+                        class="nav-link"
+                        :class="[$route.name == 'Dashboard' ? 'active':'']"
+                        aria-current="page">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M3 6.5C3 3.87479 3.02811 3 6.5 3C9.97189 3 10 3.87479 10 6.5C10 9.12521 10.0111 10 6.5 10C2.98893 10 3 9.12521 3 6.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -27,6 +30,68 @@
                             <span class="item-name">Dashboard</span>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link :to="{name: 'Chat'}" 
+                        class="nav-link" 
+                        aria-current="page"
+                        :class="[$route.name == 'Chat' ? 'active':'']">
+                            <font-awesome-icon icon="fa-solid fa-message" class="mt-1"/>
+                            <span class="item-name">Chat</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name: 'Bot'}" 
+                        class="nav-link" 
+                        aria-current="page"
+                        :class="[$route.name == 'Bot' ? 'active':'']">
+                            <font-awesome-icon icon="fa-solid fa-robot" class="mt-1"/>
+                            <span class="item-name">Bot</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name: 'Knowledge'}" 
+                        class="nav-link" 
+                        aria-current="page"
+                        :class="[$route.name == 'Knowledge' ? 'active':'']">
+                            <font-awesome-icon icon="fa-solid fa-book" class="mt-1"/>
+                            <span class="item-name">Knowledge</span>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                        :class="[accountRoutes.includes($route.name) ? 'active':'']"
+                        data-bs-toggle="collapse" 
+                        href="#sidebar-account" 
+                        role="button" 
+                        aria-expanded="false" 
+                        aria-controls="sidebar-user">
+                            <font-awesome-icon icon="fa-solid fa-gear" class="mt-1"/>
+                            <span class="item-name">Account</span>
+                            <i class="right-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </i>
+                        </a>
+                        <ul class="sub-nav"
+                        :class="[accountRoutes.includes($route.name) ? 'collapsed':'collapse']" 
+                        id="sidebar-account" 
+                        data-bs-parent="#sidebar">
+                            <li class="nav-item" v-for="(item, i) in accountMenus" :key="i">
+                                <router-link class="nav-link" :to="{name: item.route}">
+                                    <i class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> {{ item.label.split('')[0] }} </i>
+                                    <span class="item-name">{{ item.label }}</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
@@ -37,6 +102,13 @@
 
 <script setup>
 import AuthLogo from '../AuthLogo.vue';
+
+const accountRoutes = ['AccountUsers','AccountBilling','AccountIntegration']
+const accountMenus = [
+    {label: 'Users', route: 'AccountUsers'},
+    {label: 'Billing', route: 'AccountBilling'},
+    {label: 'Integrations', route: 'AccountIntegration'},
+]
 
 </script>
 

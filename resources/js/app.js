@@ -10,8 +10,8 @@ import 'flowbite';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {  } from '@fortawesome/free-solid-svg-icons'
-library.add( )
+import { faMessage, faRobot, faBook, faGear, faCircleUser } from '@fortawesome/free-solid-svg-icons'
+library.add( faMessage, faRobot, faBook, faGear, faCircleUser )
 
 createApp(App)
     .use(router)

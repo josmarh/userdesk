@@ -56,10 +56,7 @@ const store = createStore({
             state.user.data = userInfo.user;
             localStorage.setItem('userInfo', JSON.stringify(userInfo.user));
         },
-        logout: state => {
-            state.user.data = {};
-            state.user.token = null;
-        },
+        
     },
     mutations: {
         setUser: (state, userData) => {
@@ -69,6 +66,10 @@ const store = createStore({
             localStorage.setItem('userInfo', JSON.stringify(userData.user));
             localStorage.setItem('TOKEN', userData.token);
             localStorage.setItem('can', userData.permissions);
+        },
+        logout: state => {
+            state.user.data = {};
+            state.user.token = null;
         },
     },
     modules: {}
