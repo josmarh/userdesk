@@ -6,6 +6,7 @@ import GuestLayout from '../components/layouts/GuestLayout.vue'
 import Signin from '../views/auth/Signin.vue'
 import Signup from '../views/auth/Signup.vue'
 import ForgotPassword from '../views/auth/ForgotPassword.vue'
+import Profile from '../views/auth/Profile.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Chat from '../views/chat/Index.vue'
 import Bot from '../views/bots/Index.vue'
@@ -34,6 +35,7 @@ const routes = [
         meta: {requiresAuth: true},
         children: [
             {path: 'dashboard', name: 'Dashboard', component: Dashboard},
+            {path: 'profile', name: 'Profile', component: Profile},
             {path: 'conversations', name: 'Chat', component: Chat},
             {path: 'bots', name: 'Bot', component: Bot},
             {path: 'directories', name: 'Knowledge', component: Knowledge},

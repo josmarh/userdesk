@@ -13,6 +13,7 @@
         <!-- Library / Plugin Css Build -->
         <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/logik.css?v=1.0.0') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     </head>
     <body class="antialiased">

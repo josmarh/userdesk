@@ -1,26 +1,25 @@
 import { notify } from "notiwind";
+import store from '../stores'
 
 const helper = {
+    appname: import.meta.env.VITE_APP_NAME,
     notifySuccess(message) {
-        notify({
-            group: "success",
-            title: "Success",
-            text: message
-        }, 5000)
+        store.dispatch('setNotification',{
+            type: 'Success',
+            message: message
+        })
     },
     notifyInfo(message) {
-        notify({
-            group: "info",
-            title: "Info",
-            text: message
-        }, 5000)
+        store.dispatch('setNotification',{
+            type: 'Info',
+            message: message
+        })
     },
-    notifyWarn(message) {
-        notify({
-            group: "warn",
-            title: "Warning",
-            text: message
-        }, 5000)
+    notifyWarning(message) {
+        store.dispatch('setNotification',{
+            type: 'Warning',
+            message: message
+        })
     },
     notifyError(err) {
         if(err.response) {
@@ -31,11 +30,10 @@ const helper = {
                 } else {
                     errMsg = err.response.data.error
                 }
-                notify({
-                    group: "error",
-                    title: "Error",
-                    text: errMsg
-                }, 5000)
+                store.dispatch('setNotification',{
+                    type: 'Error',
+                    message: errMsg
+                })
             }
         }
     }

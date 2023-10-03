@@ -3,6 +3,10 @@ import axiosClient from "../axios";
 
 const store = createStore({
     state: {
+        notifications: {
+            type: '',
+            message: ''
+        },
         user: {
             data: JSON.parse(localStorage.getItem('userInfo')),
             token: localStorage.getItem('TOKEN'),
@@ -11,6 +15,9 @@ const store = createStore({
     },
     getters: {},
     actions: {
+        setNotification({ commit }, payload){
+            commit('setNotification', payload)
+        },
         login({ commit }, user){
             return axiosClient.post('/login', user)
                 .then(({data}) => {
@@ -39,7 +46,7 @@ const store = createStore({
                 })
         },
         updatePersonalInfo({ commit }, user){
-            return axiosClient.put(`/personal-info`, user)
+            return axiosClient.put(`/profile/update`, user)
             .then(({data}) => {
                 commit('updatePersonalInfo', data)
                 return data;
@@ -52,13 +59,17 @@ const store = createStore({
                     return data;
                 })
         },
-        updatePersonalInfo: (state, userInfo) => {
-            state.user.data = userInfo.user;
-            localStorage.setItem('userInfo', JSON.stringify(userInfo.user));
-        },
         
     },
     mutations: {
+        setNotification: (state, payload) => {
+            state.notifications.type = payload.type
+            state.notifications.message = payload.message
+            setTimeout(() => {
+                state.notifications.type = ''
+                state.notifications.message = ''
+            },5000)
+        },
         setUser: (state, userData) => {
             state.user.data = userData.user
             state.user.token = userData.token
@@ -66,6 +77,10 @@ const store = createStore({
             localStorage.setItem('userInfo', JSON.stringify(userData.user));
             localStorage.setItem('TOKEN', userData.token);
             localStorage.setItem('can', userData.permissions);
+        },
+        updatePersonalInfo: (state, userInfo) => {
+            state.user.data = userInfo.user
+            localStorage.setItem('userInfo', JSON.stringify(userInfo.user));
         },
         logout: state => {
             state.user.data = {};
