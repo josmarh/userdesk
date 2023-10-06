@@ -14,7 +14,7 @@ class FolderController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $folders = Folder::where('user_id',$user->id)->paginate(12);
+        $folders = Folder::where('user_id',$user->id)->paginate(15);
 
         return FolderResource::collection($folders);
     }
@@ -45,9 +45,15 @@ class FolderController extends Controller
      */
     public function show(string $id)
     {
-        $folder = Folder::findOrFail($id);
+        $folder = Folder::where('directory_id', $id)->first();
 
-        return new FolderResource($folder);
+        if($folder) {
+            return new FolderResource($folder);
+        }
+
+        return response([
+            'error' => 'Invalid directory'
+        ],422);
     }
 
     /**

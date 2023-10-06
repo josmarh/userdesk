@@ -52,7 +52,7 @@
                         <router-link :to="{name: 'Knowledge'}" 
                         class="nav-link" 
                         aria-current="page"
-                        :class="[$route.name == 'Knowledge' ? 'active':'']">
+                        :class="[KnowledgeRoutes.includes($route.name) ? 'active':'']">
                             <font-awesome-icon icon="fa-solid fa-book" class="mt-1"/>
                             <span class="item-name">Knowledge</span>
                         </router-link>
@@ -103,6 +103,7 @@
 <script setup>
 import AuthLogo from '../AuthLogo.vue';
 
+const KnowledgeRoutes = ['Knowledge','FolderDocument']
 const accountRoutes = ['AccountUsers','AccountBilling','AccountIntegration']
 const accountMenus = [
     {label: 'Users', route: 'AccountUsers'},

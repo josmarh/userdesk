@@ -14,6 +14,7 @@ import Knowledge from '../views/knowledge/Index.vue'
 import AccountUsers from '../views/account/User.vue'
 import AccountBilling from '../views/account/Billing.vue'
 import AccountIntegration from '../views/account/Integration.vue'
+import FolderDocument from '../views/knowledge/Document.vue'
 
 const routes = [
     {
@@ -42,6 +43,7 @@ const routes = [
             {path: '/settings/users', name: 'AccountUsers', component: AccountUsers},
             {path: '/settings/billing', name: 'AccountBilling', component: AccountBilling},
             {path: '/settings/integrations', name: 'AccountIntegration', component: AccountIntegration},
+            {path: '/directories/:directoryId/documents', name: 'FolderDocument', component: FolderDocument},
         ]
     },
 ];

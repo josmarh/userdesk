@@ -7,6 +7,9 @@ const folderStore = createStore({
             data: [],
             meta: {},
             links: {}
+        },
+        folder: {
+            data: {}
         }
     },
     getters: {},
@@ -24,10 +27,20 @@ const folderStore = createStore({
                     return data;
                 })
         },
+        showFolder({ commit }, id){
+            return axiosClient.get(`/folder/show/${id}`)
+                .then(({data}) => {
+                    commit('setFolder', data)
+                    return data;
+                })
+        },
     },
     mutations: {
         setFolders: (state, data) => {
             state.folders = data
+        },
+        setFolder: (state, data) => {
+            state.folder = data
         }
     },
     modules: {}

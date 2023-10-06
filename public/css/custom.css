@@ -21,3 +21,21 @@ button:disabled {
     right:25px;
     bottom:40px;
 }
+.text-gray {
+    color: #8A92A6
+}
+.text-gray:hover {
+    color: #8A92A6
+}
+.text-black {
+    color: #000000
+}
+.bg-light-blue {
+    background: #EFF6FF;
+}
+.bg-light-purple {
+    background: #FAF5FF;
+}
+.bg-light-green {
+    background: #ECFDF5;
+}
