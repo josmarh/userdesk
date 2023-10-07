@@ -12,10 +12,14 @@ import 'flowbite';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMessage, faRobot, faBook, faGear, faCircleUser, 
-    faPlus, faFolderPlus, faFolderClosed
+    faPlus, faFolderPlus, faFolderClosed, faEllipsisVertical,
+    faCaretDown, faTrash, faPen, faPenToSquare, faCloudArrowUp,
+    faLink
 } from '@fortawesome/free-solid-svg-icons'
 library.add( faMessage, faRobot, faBook, faGear, faCircleUser, 
-    faPlus, faFolderPlus, faFolderClosed 
+    faPlus, faFolderPlus, faFolderClosed, faEllipsisVertical,
+    faCaretDown, faTrash, faPen, faPenToSquare, faCloudArrowUp,
+    faLink
 )
 
 const progressBarOptions = {

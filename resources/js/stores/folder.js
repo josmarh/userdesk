@@ -34,6 +34,18 @@ const folderStore = createStore({
                     return data;
                 })
         },
+        updateFolder({ }, payload){
+            return axiosClient.put(`/folder/update/${payload.id}`, payload)
+                .then(({data}) => {
+                    return data;
+                })
+        },
+        deleteFolder({ }, id){
+            return axiosClient.delete(`/folder/delete/${id}`)
+                .then(({data}) => {
+                    return data;
+                })
+        },
     },
     mutations: {
         setFolders: (state, data) => {

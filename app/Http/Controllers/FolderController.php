@@ -14,7 +14,9 @@ class FolderController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $folders = Folder::where('user_id',$user->id)->paginate(15);
+        $folders = Folder::where('user_id',$user->id)
+            ->latest()
+            ->paginate(15);
 
         return FolderResource::collection($folders);
     }
@@ -52,7 +54,7 @@ class FolderController extends Controller
         }
 
         return response([
-            'error' => 'Invalid directory'
+            'error' => 'Invalid folder'
         ],422);
     }
 
@@ -61,7 +63,21 @@ class FolderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $folder = Folder::where('directory_id', $id);
+
+        if($folder->first()) {
+            $folder->update([
+                'name' => $request->name
+            ]);
+
+            return response([
+                'message' => 'Folder updated'
+            ]);
+        }
+
+        return response([
+            'error' => 'Invalid folder'
+        ],422);
     }
 
     /**
@@ -69,6 +85,18 @@ class FolderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $folder = Folder::where('directory_id', $id);
+
+        if($folder->first()) {
+            $folder->delete();
+
+            return response([
+                'message' => 'Folder deleted'
+            ]);
+        }
+
+        return response([
+            'error' => 'Invalid folder'
+        ],422);
     }
 }

@@ -61,7 +61,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link py-0 d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!-- <img src="../assets/images/avatars/01.png" alt="User-Profile" class="img-fluid avatar avatar-40 avatar-rounded"> -->
-                                <font-awesome-icon icon="fa-solid fa-circle-user img-fluid avatar avatar-40 avatar-rounded" />
+                                <font-awesome-icon icon="fa-solid fa-circle-user" />
                                 <div class="caption ms-3 d-none d-md-block ">
                                     <h6 class="mb-0 caption-title">{{ user }}</h6>
                                 </div>
