@@ -14,12 +14,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMessage, faRobot, faBook, faGear, faCircleUser, 
     faPlus, faFolderPlus, faFolderClosed, faEllipsisVertical,
     faCaretDown, faTrash, faPen, faPenToSquare, faCloudArrowUp,
-    faLink
+    faLink, faArrowLeft
 } from '@fortawesome/free-solid-svg-icons'
 library.add( faMessage, faRobot, faBook, faGear, faCircleUser, 
     faPlus, faFolderPlus, faFolderClosed, faEllipsisVertical,
     faCaretDown, faTrash, faPen, faPenToSquare, faCloudArrowUp,
-    faLink
+    faLink, faArrowLeft
 )
 
 const progressBarOptions = {

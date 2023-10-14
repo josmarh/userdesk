@@ -46,6 +46,9 @@ const folderStore = createStore({
                     return data;
                 })
         },
+        removeFolderInfo({ commit }) {
+            commit('setFolderEmpty')
+        }
     },
     mutations: {
         setFolders: (state, data) => {
@@ -53,6 +56,9 @@ const folderStore = createStore({
         },
         setFolder: (state, data) => {
             state.folder = data
+        },
+        setFolderEmpty: state => {
+            state.folder.data = {}
         }
     },
     modules: {}
